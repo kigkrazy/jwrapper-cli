@@ -1,6 +1,7 @@
 package com.reizx.jwrapper;
 
 import com.reizx.jwrapper.entity.ArgsOptions;
+import com.reizx.jwrapper.util.DaemonUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 import okhttp3.OkHttpClient;
@@ -22,6 +23,8 @@ public class App {
      */
     public static void main(String[] args) throws Exception {
         parseArgs(args);//解析参数
+        //守护模式，即主线程执行完毕不退出
+        DaemonUtil.daemon();
         EnvHelper.initEnv("jwc-log", Log.V, 10 * 1000);
     }
 
